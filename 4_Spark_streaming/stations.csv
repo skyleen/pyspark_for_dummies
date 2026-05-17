@@ -1,0 +1,16 @@
+station_id,station_name,zone,has_charging_station,charging_slots_available
+S001,Велосипедная улица,North,False,0
+S002,Скейт-парк,North,False,0
+S003,Лесной променад,South,True,3
+S004,Центральная площадь,Center,False,0
+S005,Парк Дружбы,South,False,0
+S006,Набережная,Center,True,2
+S007,Маяк,North,False,0
+S008,Старый мост,North,False,0
+S009,Солнечная аллея,South,True,5
+S010,Площадь Свободы,Center,False,0
+S011,Кофейный квартал,Center,False,0
+S012,Театральная,Center,True,1
+S013,Фонтанная,South,False,0
+S014,Спортивная зона,South,False,0
+S015,Детский парк,Center,True,4
