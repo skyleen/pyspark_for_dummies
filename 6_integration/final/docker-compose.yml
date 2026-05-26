@@ -1,0 +1,55 @@
+services:
+  postgres:
+    image: postgres:18.2
+    container_name: final_task_postgres
+    environment:
+      POSTGRES_USER: spark_user
+      POSTGRES_PASSWORD:
+      POSTGRES_DB: spark_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - final_task_pgdata:/var/lib/postgresql/18/data
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:26.2
+    container_name: final_task_clickhouse
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+      - CLICKHOUSE_USER=spark_user
+      - CLICKHOUSE_PASSWORD=
+      - CLICKHOUSE_DB=analytics_db
+    volumes:
+      - final_task_chdata:/var/lib/clickhouse
+
+  mongodb:
+    image: mongo:8.2.5
+    container_name: final_task_mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=spark_user
+      - MONGO_INITDB_ROOT_PASSWORD=
+    volumes:
+      - final_task_mongodata:/data/db
+
+  minio:
+    image: minio/minio:RELEASE.2025-09-07T16-13-09Z
+    container_name: final_task_minio
+    ports:
+      - "9002:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minio_admin
+      MINIO_ROOT_PASSWORD:
+    command: server /data --console-address ":9001"
+    volumes:
+      - final_task_miniodata:/data
+
+volumes:
+  final_task_pgdata:
+  final_task_chdata:
+  final_task_mongodata:
+  final_task_miniodata:

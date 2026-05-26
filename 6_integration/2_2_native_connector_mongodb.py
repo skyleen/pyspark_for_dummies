@@ -33,8 +33,6 @@ df_mongo = spark.createDataFrame(mongo_data, mongo_schema)
     .mode("append")
     .save())
 
-df_mongo = spark.createDataFrame(mongo_data, mongo_schema)
-
 mongo_exploration_df = (spark.read
     .format("mongodb")
     .option("connection.uri", "mongodb://spark_user:spark_password@localhost:27017/?authSource=admin")
